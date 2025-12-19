@@ -35,19 +35,39 @@ function App() {
       {/* Dark Mode Toggle */}
       <button
         onClick={() => setIsDark(!isDark)}
-        className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 dark:hover:bg-black/60 transition-all shadow-lg active:scale-95"
+        className="fixed top-6 right-6 z-50 p-3 rounded-full overflow-hidden transition-all active:scale-95 hover:scale-105"
+        style={{
+          background: 'rgba(255, 255, 255, 0.01)',
+          boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }}
         title={isDark ? "Switch into Light Mode" : "Switch into Dark Mode"}
       >
-        {isDark ? "☀️" : "🌙"}
+        {/* Simple Glint */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-gradient-to-b from-white/40 to-transparent rounded-b-full opacity-60 pointer-events-none filter blur-[1px]" />
+
+        <span className="relative z-10 drop-shadow-md">{isDark ? "☀️" : "🌙"}</span>
       </button>
 
       {/* Wallpaper Switch Button - Lifted to App level for correct Z-Index */}
       <button
         onClick={nextWallpaper}
-        className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/20 text-white/80 hover:text-white hover:bg-white/20 dark:hover:bg-black/60 transition-all active:scale-95 shadow-lg group"
+        className="fixed bottom-6 right-6 z-50 p-3 rounded-full overflow-hidden transition-all active:scale-95 hover:scale-105 group"
+        style={{
+          background: 'rgba(255, 255, 255, 0.01)',
+          boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+          WebkitBackdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }}
         title="Switch Wallpaper"
       >
-        <RefreshCw size={20} className="group-hover:rotate-180 transition-transform duration-500" />
+        {/* Simple Glint */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-gradient-to-b from-white/40 to-transparent rounded-b-full opacity-60 pointer-events-none filter blur-[1px]" />
+
+        <RefreshCw size={20} className="relative z-10 drop-shadow-md group-hover:rotate-180 transition-transform duration-500 text-white" />
       </button>
 
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[90vh] gap-12 p-8 lg:p-12">

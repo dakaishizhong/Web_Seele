@@ -12,13 +12,20 @@ export default function MusicWidget() {
             {isExpanded && (
                 <div
                     className="fixed inset-0 z-40 bg-transparent"
-                    onClick={() => setIsExpanded(false)}
+                    onClick={() => { setIsExpanded(false); setIsHovered(false); }}
                 />
             )}
 
             <motion.div
                 layout
-                className={`fixed bottom-6 left-6 z-50 bg-white/5 dark:bg-black/60 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl overflow-hidden transition-colors ring-1 ring-white/5 ${isExpanded ? 'rounded-xl' : 'rounded-full cursor-pointer hover:bg-white/10 dark:hover:bg-black/80'}`}
+                className={`fixed bottom-6 left-6 z-50 overflow-hidden ${isExpanded ? 'rounded-2xl' : 'rounded-full cursor-pointer'}`}
+                style={{
+                    background: 'rgba(255, 255, 255, 0.01)',
+                    boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+                    WebkitBackdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                }}
                 initial={{ x: -20, opacity: 0 }}
                 animate={{
                     x: 0,
@@ -30,10 +37,14 @@ export default function MusicWidget() {
                 onClick={(e) => {
                     e.stopPropagation(); // Prevent backdrop click if clicking widget itself
                     !isExpanded && setIsExpanded(true);
+                    // No need to set hovered false here as we might be hovering it
                 }}
                 onMouseEnter={() => !isExpanded && setIsHovered(true)}
                 onMouseLeave={() => !isExpanded && setIsHovered(false)}
             >
+                {/* Specular Glint */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[30%] bg-gradient-to-b from-white/40 to-transparent rounded-b-xl opacity-80 pointer-events-none filter blur-[1px]" />
+
                 <div className="relative w-full h-full">
                     {/* Minimized View Elements */}
                     <motion.div

@@ -21,26 +21,34 @@ export default function AppDock() {
                     href={app.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex flex-col items-center justify-center p-5 bg-white/5 dark:bg-black/40 backdrop-blur-3xl border border-white/20 dark:border-white/10 rounded-[1.5rem] shadow-xl transition-all hover:bg-white/15 dark:hover:bg-black/60 hover:shadow-2xl hover:border-white/30 dark:hover:border-white/20 overflow-hidden"
+                    className="group relative flex flex-col items-center justify-center p-5 rounded-[2rem] overflow-hidden transition-all duration-300"
+                    style={{
+                        // Standard Liquid Glass Style for ALL icons
+                        background: 'rgba(255, 255, 255, 0.01)',
+                        boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2), 0 10px 30px rgba(0, 0, 0, 0.25)',
+                        backdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+                        WebkitBackdropFilter: 'blur(6px) saturate(180%) contrast(110%)',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                    }}
                     variants={{
                         hidden: { y: 20, opacity: 0 },
                         show: { y: 0, opacity: 1 }
                     }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                    {/* Glossy Reflection */}
-                    <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* No Top Specular Glint (Removed as requested) */}
 
-                    <div className={`relative z-10 p-3 rounded-2xl bg-white/10 shadow-inner mb-2 ${app.color} group-hover:scale-110 transition-transform duration-300`}>
-                        <app.icon size={28} />
-                    </div>
-                    <span className="relative z-10 text-white font-medium tracking-wide text-xs md:text-sm opacity-80 group-hover:opacity-100 transition-opacity">
+                    {/* Icon with strong shadow for white backgrounds */}
+                    <app.icon size={44} className={`relative z-10 mb-3 ${app.color} drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-300`} />
+
+                    {/* Label with heavy text shadow */}
+                    <span className="relative z-10 text-white font-medium tracking-wide text-xs md:text-sm drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] opacity-90 group-hover:opacity-100 transition-opacity">
                         {app.name}
                     </span>
                 </motion.a>
             ))}
-        </motion.div>
+        </motion.div >
     );
 }

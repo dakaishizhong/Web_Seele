@@ -10,10 +10,10 @@ export const APPS = [
     { id: 7, name: 'AI', url: 'https://ai.rosu.app/', icon: BookOpen, color: 'text-pink-400' },
 ];
 
-export const WALLPAPERS = [
-    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80', // Mountain
-    'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80', // Dark Gradient
-    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80', // Space
-    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80', // Mountains
-    'https://images.unsplash.com/photo-1534067783741-5127d28f8515?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80', // Minimal
-];
+// Auto-load all images from src/assets/wallpapers
+const wallpaperModules = import.meta.glob('./assets/wallpapers/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' });
+
+// Convert the object values to an array of URLs
+export const WALLPAPERS = Object.values(wallpaperModules).length > 0
+    ? Object.values(wallpaperModules)
+    : ['https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80']; // Fallback if folder empty
