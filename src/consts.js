@@ -4,8 +4,8 @@ export const APPS = [
     { id: 1, name: 'Google', url: 'https://google.com', icon: Search, color: 'text-blue-400' },
     { id: 2, name: 'ChatGPT', url: 'https://chat.openai.com', icon: Bot, color: 'text-emerald-400' },
     { id: 3, name: 'YouTube', url: 'https://youtube.com', icon: Youtube, color: 'text-red-500' },
-    { id: 4, name: 'My NAS', url: '#', icon: Server, color: 'text-amber-400' },
-    { id: 5, name: 'Komari', url: '#', icon: Router, color: 'text-cyan-400' },
+    { id: 4, name: 'Drive', url: 'https://mydrive.rosu.app/', icon: Server, color: 'text-amber-400' },
+    { id: 5, name: 'Komari', url: 'https://komari.houkai.tech/', icon: Router, color: 'text-cyan-400' },
     { id: 6, name: 'API', url: 'https://api.rosu.app/console', icon: Activity, color: 'text-purple-400' },
     { id: 7, name: 'AI', url: 'https://ai.rosu.app/', icon: BookOpen, color: 'text-pink-400' },
 ];
